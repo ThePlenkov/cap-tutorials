@@ -1,0 +1,52 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import Header from '../../../../components/Header.astro';
+import Sidebar from '../../../../components/Sidebar.astro';
+import Navigation from '../../../../components/Navigation.astro';
+import ThemeToggle from '../../../../components/ThemeToggle.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const tasks = await getCollection('tutorials', (entry) => 
+    entry.slug.includes('/tasks/')
+  );
+  
+  return tasks.map(task => {
+    const [tutorialId, , taskSlug] = task.slug.split('/');
+    return {
+      params: {
+        tutorial: tutorialId,
+        slug: taskSlug
+      },
+      props: { task, tutorialId }
+    };
+  });
+}
+
+const { task, tutorialId } = Astro.props;
+const { Content } = await task.render();
+
+const tasks = await getCollection('tutorials', (entry) => 
+  entry.slug.startsWith(`${tutorialId}/tasks/`)
+);
+const sortedTasks = tasks.sort((a, b) => a.data.order - b.data.order);
+
+const currentIndex = sortedTasks.findIndex(t => t.slug === task.slug);
+const nextTask = sortedTasks[currentIndex + 1];
+const prevTask = sortedTasks[currentIndex - 1];
+---
+
+<Layout title={task.data.title}>
+  <Header>
+    <ThemeToggle />
+  </Header>
+  <div class="flex min-h-screen">
+    <Sidebar tasks={sortedTasks} currentSlug={task.slug} tutorialId={tutorialId} />
+    <main class="flex-1 p-8">
+      <article class="prose prose-lg dark:prose-invert max-w-3xl">
+        <Content />
+      </article>
+      <Navigation prevTask={prevTask} nextTask={nextTask} tutorialId={tutorialId} />
+    </main>
+  </div>
+</Layout>
