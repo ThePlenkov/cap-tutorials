@@ -1,7 +1,6 @@
 ---
 title: "Containerizing Your CAP Application"
 description: "Learn how to containerize your SAP CAP application using Docker"
-tutorialId: "sap-cap-k8s"
 order: 1
 ---
 

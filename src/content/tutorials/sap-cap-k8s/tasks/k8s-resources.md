@@ -1,7 +1,6 @@
 ---
 title: "Creating Kubernetes Resources"
 description: "Set up the necessary Kubernetes resources for deploying your CAP application"
-tutorialId: "sap-cap-k8s"
 order: 3
 ---
 

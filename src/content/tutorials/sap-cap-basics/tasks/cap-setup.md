@@ -1,8 +1,6 @@
 ---
 title: "Setting up your CAP development environment"
 description: "Install and configure the necessary tools for SAP CAP development"
-tutorialId: "sap-cap-basics"
-order: 1
 ---
 
 # Setting up your CAP development environment

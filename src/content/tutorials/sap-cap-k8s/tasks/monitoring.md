@@ -1,7 +1,6 @@
 ---
 title: "Monitoring and Health Checks"
 description: "Implement monitoring and health checks for your CAP application in Kubernetes"
-tutorialId: "sap-cap-k8s"
 order: 5
 ---
 

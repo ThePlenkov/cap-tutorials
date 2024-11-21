@@ -1,7 +1,6 @@
 ---
 title: "Setting Up Kubernetes Development Environment"
 description: "Configure a local Kubernetes environment for development and testing"
-tutorialId: "sap-cap-k8s"
 order: 2
 ---
 

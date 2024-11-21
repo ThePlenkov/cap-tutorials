@@ -1,7 +1,6 @@
 ---
 title: "Configuring Database Persistence"
 description: "Set up persistent storage for your CAP application's database in Kubernetes"
-tutorialId: "sap-cap-k8s"
 order: 4
 ---
 
